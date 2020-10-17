@@ -42,19 +42,23 @@ app.post('/send', (req, res) => {
 
              // create reusable transporter object using the default SMTP transport
                   let transporter = nodemailer.createTransport({
-                   service: 'gmail',
+                   host: 'smtp.mailtrap.io',
+                   port: 587,
+                   secure: false,
                     auth: {
-                      type: "OAuth2", // default
-                      email: 'emylegit@gmail.com', // generated ethereal user
-                      pass: 'Kigali@5AM', // generated ethereal password
-                    }});
+                      user: '8d5430090d7c35',
+                      pass: '89f5a4b7015f70', // generated ethereal password
+                    },
+                tls:{
+                     rejectUnauthorized: false
+                }});
 
         // send mail with defined transport object
             let mailOptions = {
-                from:'emylegit@gmail.com', // sender address
+                from:'"tester" <8d5430090d7c35>', // sender address
                 to: "rukundoemma@gmail.com", // list of receivers
-                subject: "Testing the nodemailer ✔", // Subject line
-                text: "This must wor ", // plain text body
+                subject: "Testing the nodemailer", // Subject line
+                text: "This must yeah this one", // plain text body
                 // html: output, // html body
             };
 
